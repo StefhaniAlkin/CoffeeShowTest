@@ -36,3 +36,8 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.idea/sonarlint/
+/.idea/encodings.xml
+.idea/encodings.xml
+.idea/encodings.xml
+.idea/encodings.xml
