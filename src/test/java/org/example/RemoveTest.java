@@ -32,4 +32,20 @@ public class RemoveTest {
         WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
         assertThat(modal).isNotNull();
     }
+
+    @Test
+    @DisplayName("Should close remove modal after click on close button")
+    void shouldCloseRemoveModalAfterClickOnFecharButton() throws InterruptedException {
+
+        driver.get("https://coffee-show.vercel.app/");
+        Thread.sleep(1000);
+        driver.findElement(By.id("delete")).click();
+        WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
+
+        WebElement primeiroBotao = modal.findElement(By.tagName("button"));
+        primeiroBotao.click();
+        assertThrows(NoSuchElementException.class, () -> {
+            driver.findElement(By.id("chakra-modal-:R1qpf6:"));
+        });
+    }
 }
