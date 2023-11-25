@@ -17,7 +17,6 @@ public class RemoveTest {
     WebDriver driver;
     @BeforeEach
     void setUp() {
-        WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
         WebDriverManager.firefoxdriver().setup();
     }

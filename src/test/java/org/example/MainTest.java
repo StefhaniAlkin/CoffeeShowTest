@@ -14,9 +14,8 @@ class MainTest {
     WebDriver driver;
     @BeforeEach
     void setUp(){
-        WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
-        WebDriverManager.firefoxdriver().setup(); //sets up a valid driver for Chrome.
+        WebDriverManager.firefoxdriver().setup();
     }
 
     @Test
@@ -45,5 +44,4 @@ class MainTest {
             driver.findElement(By.id("chakra-modal-:R1qpf6:"));
         });
     }
-    
 }

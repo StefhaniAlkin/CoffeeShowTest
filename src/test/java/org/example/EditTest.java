@@ -17,9 +17,8 @@ public class EditTest {
     WebDriver driver;
     @BeforeEach
     void setUp() {
-        WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
-        WebDriverManager.firefoxdriver().setup(); //sets up a valid driver for Chrome.
+        WebDriverManager.firefoxdriver().setup();
     }
 
     @Test
