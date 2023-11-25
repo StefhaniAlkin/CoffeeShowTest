@@ -8,6 +8,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 class MainTest {
     WebDriver driver;
     @BeforeEach
@@ -27,4 +29,21 @@ class MainTest {
         WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
         assertThat(modal).isNotNull();
     }
+
+    @Test
+    @DisplayName("Should close register modal after click on adicionar item button")
+    void shouldCloseRegisterModalAfterClickOnFecharItemButton() throws InterruptedException {
+
+        driver.get("https://coffee-show.vercel.app/");
+        Thread.sleep(1000);
+        driver.findElement(By.id("create")).click();
+        WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
+
+        WebElement primeiroBotao = modal.findElement(By.tagName("button"));
+        primeiroBotao.click();
+        assertThrows(NoSuchElementException.class, () -> {
+            driver.findElement(By.id("chakra-modal-:R1qpf6:"));
+        });
+    }
+    
 }
