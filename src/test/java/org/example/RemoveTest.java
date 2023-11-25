@@ -21,4 +21,15 @@ public class RemoveTest {
         driver = new FirefoxDriver();
         WebDriverManager.firefoxdriver().setup();
     }
+
+    @Test
+    @DisplayName("Should open remove modal after click on remove item button")
+    void shouldOpenEditModalAfterClickOnEditarItemButton() throws InterruptedException {
+
+        driver.get("https://coffee-show.vercel.app/");
+        Thread.sleep(1000);
+        driver.findElement(By.id("delete")).click();
+        WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
+        assertThat(modal).isNotNull();
+    }
 }
