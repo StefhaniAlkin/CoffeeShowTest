@@ -59,4 +59,17 @@ public class EditTest {
         });
     }
 
+    @Test
+    @DisplayName("Should open edit item modal after click on editar item button and select item to edit")
+    void shouldOpenEditItemModalAfterClickOnEditarItemButtonAndSelectItem() throws InterruptedException {
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.id("update")));
+        Thread.sleep(2000);
+        button.click();
+        WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
+        modal.findElement(By.xpath("//td[p[text()='Editar']]")).click();
+        WebElement itemModal = driver.findElement(By.id("chakra-modal-:r3:"));
+        assertThat(itemModal).isNotNull();
+    }
+
+
 }
