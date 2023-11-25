@@ -10,12 +10,16 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RemoveTest {
@@ -83,5 +87,20 @@ public class RemoveTest {
         deletarButtonModal.click();
         WebElement toast = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("toast-1-title")));
         assertThat(toast.getText()).isEqualTo("Item deletado com sucesso!");
+    }
+
+    @Test
+    @DisplayName("Should close delete confirmation modal after click on close button")
+    void shouldCloseDeleteConfirmationModalAterClickOnCloseBUtton() throws InterruptedException {
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.id("delete")));
+        Thread.sleep(3000);
+        button.click();
+        WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
+        modal.findElement(By.xpath("//td[p[text()='Deletar']]")).click();
+        List<WebElement> closeButtons = driver.findElements(By.className("chakra-modal__close-btn"));
+        closeButtons.get(1).click();
+        List<WebElement> modals = driver.findElements(By.className("chakra-modal__content-container"));
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            modals.get(1);});
     }
 }
