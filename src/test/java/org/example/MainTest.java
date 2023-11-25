@@ -17,6 +17,7 @@ class MainTest {
     void setUp(){
         driver = new FirefoxDriver();
         WebDriverManager.firefoxdriver().setup();
+        driver.get("https://coffee-show.vercel.app/");
     }
     @AfterEach
     void tearDown() {
@@ -28,8 +29,6 @@ class MainTest {
     @Test
     @DisplayName("Should open register modal after click on adicionar item button")
     void shouldOpenRegisterModalAfterClickOnAdicionarItemButton() throws InterruptedException {
-
-        driver.get("https://coffee-show.vercel.app/");
         Thread.sleep(1000);
         driver.findElement(By.id("create")).click();
         WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
@@ -39,8 +38,6 @@ class MainTest {
     @Test
     @DisplayName("Should close register modal after click on adicionar item button")
     void shouldCloseRegisterModalAfterClickOnFecharItemButton() throws InterruptedException {
-
-        driver.get("https://coffee-show.vercel.app/");
         Thread.sleep(1000);
         driver.findElement(By.id("create")).click();
         WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));

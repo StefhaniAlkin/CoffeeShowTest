@@ -20,6 +20,7 @@ public class EditTest {
     void setUp() {
         driver = new FirefoxDriver();
         WebDriverManager.firefoxdriver().setup();
+        driver.get("https://coffee-show.vercel.app/");
     }
 
     @AfterEach
@@ -32,8 +33,6 @@ public class EditTest {
     @Test
     @DisplayName("Should open edit modal after click on editar item button")
     void shouldOpenEditModalAfterClickOnEditarItemButton() throws InterruptedException {
-
-        driver.get("https://coffee-show.vercel.app/");
         Thread.sleep(1000);
         driver.findElement(By.id("update")).click();
         WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
@@ -43,8 +42,6 @@ public class EditTest {
     @Test
     @DisplayName("Should close edit modal after click on close button")
     void shouldCloseEditModalAfterClickOnFecharButton() throws InterruptedException {
-
-        driver.get("https://coffee-show.vercel.app/");
         Thread.sleep(1000);
         driver.findElement(By.id("update")).click();
         WebElement modal = driver.findElement(By.id("chakra-modal-:R1qpf6:"));
@@ -55,4 +52,5 @@ public class EditTest {
             driver.findElement(By.id("chakra-modal-:R1qpf6:"));
         });
     }
+
 }
